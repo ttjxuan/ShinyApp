@@ -1,0 +1,59 @@
+---
+title: "Pitch for My Shiny App"
+author: "xuanru shen"
+date: "1/22/2017"
+output: ioslides_presentation
+---
+
+## Shiny App Introduction
+This presentation is part of the John Hopkins Coursera Project for Developing Data Products.
+
+The shiny app contains ui.R and Server.R. For more information about the code for my app, please refer to https://github.com/ttjxuan/ShinyApp
+
+Also, you can open this app by clicking link https://ttjxuan.shinyapps.io/myshinyapp/
+
+The code has been upload to github repo. My ShinyApp contains 4 tabs. First Tab you will see is the documentation. **It would give you initial idea how to use the App**. In the Following slides I will show the datasets and code I use. I am mainly going to focus on the tab3 since the tab 2 would be easy in math part and technique would be similar as they other two. 
+
+- Tab 1  
+
+
+## Tab 1
+*use Gross horsepower(hp) as y and Miles/(US) gallon(mpg) as x. Use Plotly.* 
+
+```{r,eval=FALSE}
+library(plotly)
+plot_ly(mtcars, x=mtcars$wt, y = mtcars$mpg, mode = "markers",color = as.factor(mtcars$cyl),size = mtcars$hp)
+```
+
+```{r,echo=FALSE,message=FALSE,warning=FALSE,fig.width=8, fig.height=3.5}
+library(plotly)
+plot_ly(mtcars, x=mtcars$wt, y = mtcars$mpg, mode = "markers"
+        ,color = as.factor(mtcars$cyl),size = mtcars$hp)
+```
+
+## Tab 3
+
+```{r,echo=FALSE, message=FALSE}
+str(cars)
+```
+Use speed to predict the stop distance from this speed. You can choose any speed you want in this range from 4 to 25, and use three linear regression methods to predict the result. I add polynomial function as the third function.
+
+```{r,eval=FALSE}
+cars$spd1 <- ifelse(cars$speed - 12 > 0, cars$speed - 12, 0)
+model1 <- lm(dist ~ speed, data = cars)
+model2 <- lm(dist ~ spd1, data = cars)
+model3 <- lm(dist ~ I(speed^3), data = cars)
+```
+Above is the code for the three models
+
+## Tab 3
+
+The app interface is like below. Thank you!
+
+![](/Users/shelly/Desktop/interface.png)
+
+
+
+
+
+
